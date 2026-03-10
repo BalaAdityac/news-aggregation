@@ -1,0 +1,167 @@
+{
+  "name": "hackathon demo",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "263d6cc4-8392-44ab-b6d3-bd38ce1644f0",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Title",
+              "value": "AI beats humans in chess"
+            },
+            {
+              "name": "Category",
+              "value": "Technology"
+            },
+            {
+              "name": "URL",
+              "value": "https://example.com/news"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b39c19bf-bb43-4d70-9ce0-70eb17c35242",
+      "name": "Mock News",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        608,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const title = $json.Title;\nconst url = $json.URL;\n\nreturn [{\n  json: {\n    Title: title,\n    Category: $json.Category,\n    URL: url,\n    email: \"user1@gmail.com\",\n    newsletter: `Today's News: ${title}\\nRead more: ${url}`\n  }\n}];"
+      },
+      "id": "0137f054-e94a-4071-89c7-b3a9ae10ec47",
+      "name": "Generate Newsletter",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        800,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "preference",
+              "value": "Technology"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aff1a8f4-8898-4dfa-99f4-e29b7f44570d",
+      "name": "User Preference",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1008,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"Category\"]}}",
+              "value2": "={{$json[\"preference\"]}}"
+            }
+          ]
+        }
+      },
+      "id": "dbf699e9-bd09-4ecc-b6ca-b396f67d6496",
+      "name": "Check Preference",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mock News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mock News": {
+      "main": [
+        [
+          {
+            "node": "Generate Newsletter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Newsletter": {
+      "main": [
+        [
+          {
+            "node": "User Preference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "User Preference": {
+      "main": [
+        [
+          {
+            "node": "Check Preference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a08cd00a-8860-49f6-b333-56d8c38de289",
+  "meta": {
+    "instanceId": "f954c4072a9c69807960279590ed6da93619efb20ab6a861839c92f5d049d838"
+  },
+  "id": "GPVmulEHkA0ZcJSK",
+  "tags": []
+}
