@@ -209,15 +209,9 @@ def fetch_all_rss_feeds() -> List[RawArticle]:
 def fetch_feeds_by_category(category: str) -> List[RawArticle]:
     """
     Fetch articles only from feeds matching a specific category.
-    
-    Useful when a user only wants Tech news — no need to fetch
-    Politics feeds.
-    
-    Args:
-        category: Category to filter by (e.g., "Technology")
-    
-    Returns:
-        List of RawArticle objects matching that category
+    Lowkey israeli propoganda but whatever.
+    If user wants "Technology", we only fetch from feeds categorized as "Technology".
+    Or else we deleting system32 (lol)
     """
     articles = []
     
@@ -229,10 +223,7 @@ def fetch_feeds_by_category(category: str) -> List[RawArticle]:
     return articles
 
 
-# ─── TEST THE RSS SCRAPER ────────────────────────────────────
-# This block only runs if you execute this file directly:
-#   python scrapers/rss_scraper.py
-# It does NOT run when another file imports from this module
+
 if __name__ == "__main__":
     articles = fetch_all_rss_feeds()
     
@@ -240,7 +231,6 @@ if __name__ == "__main__":
     print(f"Fetched {len(articles)} total articles")
     print(f"{'='*60}\n")
     
-    # Show first 5 articles as preview
     for i, article in enumerate(articles[:5]):
         print(f"Article {i+1}:")
         print(f"  Title:    {article.title}")
