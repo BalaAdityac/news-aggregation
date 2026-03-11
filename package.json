@@ -1,0 +1,11 @@
+{
+  "name": "news-aggregation-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix Frontend",
+    "build": "npm run build --prefix Frontend",
+    "preview": "npm run preview --prefix Frontend",
+    "lint": "npm run lint --prefix Frontend",
+    "install:frontend": "npm install --prefix Frontend"
+  }
+}

@@ -5,7 +5,6 @@ from typing import Any
 
 from ...db.mongodb import get_articles_collection
 
-
 SIMILARITY_THRESHOLD = 3
 
 
@@ -43,6 +42,10 @@ async def is_duplicate(
     )
     async for document in cursor:
         existing_simhash = document.get("simhash")
-        if isinstance(existing_simhash, int) and _hamming_distance(simhash_value, existing_simhash) <= SIMILARITY_THRESHOLD:
+        if (
+            isinstance(existing_simhash, int)
+            and _hamming_distance(simhash_value, existing_simhash)
+            <= SIMILARITY_THRESHOLD
+        ):
             return True
     return False

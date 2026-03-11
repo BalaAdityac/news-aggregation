@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from ...schemas.article import Category
 
-
 RSS_SOURCES = [
     {
         "name": "NDTV",

@@ -10,7 +10,6 @@ from .api.v1.router import api_router
 from .core.scheduler import start_scheduler, stop_scheduler
 from .db.mongodb import close_db, connect_db
 
-
 logging.basicConfig(level=logging.INFO)
 
 

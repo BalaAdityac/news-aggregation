@@ -33,7 +33,15 @@ def coerce_datetime(value: Any) -> Optional[datetime]:
         return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
 
     if isinstance(value, tuple) and len(value) >= 6:
-        return datetime(*value[:6], tzinfo=timezone.utc)
+        return datetime(
+            value[0],
+            value[1],
+            value[2],
+            value[3],
+            value[4],
+            value[5],
+            tzinfo=timezone.utc,
+        )
 
     return None
 
@@ -42,7 +50,9 @@ def extract_image_url(payload: Any) -> Optional[str]:
     if not hasattr(payload, "get"):
         return None
 
-    direct = payload.get("image") or payload.get("image_url") or payload.get("urlToImage")
+    direct = (
+        payload.get("image") or payload.get("image_url") or payload.get("urlToImage")
+    )
     if isinstance(direct, str) and direct:
         return direct
 
@@ -114,7 +124,9 @@ async def persist_article(
         return False
 
     combined_text = " ".join(part for part in (summary, content) if part)
-    resolved_category = _normalize_category(category) or categorize(normalized_title, combined_text)
+    resolved_category = _normalize_category(category) or categorize(
+        normalized_title, combined_text
+    )
     if resolved_category == Category.UNCATEGORIZED:
         resolved_category = _normalize_category(default_category) or resolved_category
 
@@ -122,11 +134,19 @@ async def persist_article(
         title=normalized_title,
         url=normalized_url,
         source_name=source_name.strip(),
-        summary=summary.strip() if isinstance(summary, str) and summary.strip() else None,
-        content=content.strip() if isinstance(content, str) and content.strip() else None,
+        summary=(
+            summary.strip() if isinstance(summary, str) and summary.strip() else None
+        ),
+        content=(
+            content.strip() if isinstance(content, str) and content.strip() else None
+        ),
         author=author.strip() if isinstance(author, str) and author.strip() else None,
         published_at=coerce_datetime(published_at),
-        image_url=image_url.strip() if isinstance(image_url, str) and image_url.strip() else None,
+        image_url=(
+            image_url.strip()
+            if isinstance(image_url, str) and image_url.strip()
+            else None
+        ),
         category=resolved_category,
         tags=tags or [],
         simhash=simhash_value,

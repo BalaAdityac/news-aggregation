@@ -12,8 +12,10 @@ from ..schemas.article import Category
 
 try:
     from bson.objectid import ObjectId
-except ImportError:  # pragma: no cover - bson is installed with pymongo/motor in production.
-    ObjectId = None
+except (
+    ImportError
+):  # pragma: no cover - bson is installed with pymongo/motor in production.
+    ObjectId = None  # type: ignore[assignment, misc]
 
 
 router = APIRouter(prefix="/articles", tags=["articles"])

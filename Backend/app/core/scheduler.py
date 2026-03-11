@@ -10,7 +10,6 @@ from ..services.aggregators.api_connectors import fetch_all_apis
 from ..services.aggregators.rss_parser import fetch_all_rss
 from ..services.scrapers.web_scraper import run_all_scrapers
 
-
 logger = logging.getLogger(__name__)
 scheduler = AsyncIOScheduler()
 

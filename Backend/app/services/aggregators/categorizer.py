@@ -4,7 +4,6 @@ from typing import Final
 
 from ...schemas.article import Category
 
-
 CATEGORY_KEYWORDS: Final[dict[Category, list[str]]] = {
     Category.POLITICS: [
         "parliament",

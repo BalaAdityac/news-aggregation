@@ -8,12 +8,13 @@ from ...core.config import settings
 from ...schemas.article import Category
 from .ingest import coerce_datetime, persist_article
 
-
 NEWSAPI_BASE = "https://newsapi.org/v2"
 GNEWS_BASE = "https://gnews.io/api/v4"
 
 
-async def _save_api_articles(items: list[dict[str, Any]], *, source_fallback: str, default_category: Category) -> dict:
+async def _save_api_articles(
+    items: list[dict[str, Any]], *, source_fallback: str, default_category: Category
+) -> dict:
     saved = 0
     for item in items:
         source_name = source_fallback

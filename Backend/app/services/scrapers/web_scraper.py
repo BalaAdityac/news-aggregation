@@ -13,9 +13,11 @@ if TYPE_CHECKING:
     from ...schemas.article import Category
 
 if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
-    RuntimeCategory = import_module("app.schemas.article").Category
-    persist_article = import_module("app.services.aggregators.ingest").persist_article
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+    RuntimeCategory = import_module("Backend.app.schemas.article").Category
+    persist_article = import_module(
+        "Backend.app.services.aggregators.ingest"
+    ).persist_article
 else:
     from ...schemas.article import Category as RuntimeCategory
     from ..aggregators.ingest import persist_article
@@ -60,7 +62,9 @@ async def _scrape_listing(
     default_category: Category,
 ) -> dict[str, Any]:
     try:
-        async with httpx.AsyncClient(headers=HEADERS, timeout=20, follow_redirects=True) as client:
+        async with httpx.AsyncClient(
+            headers=HEADERS, timeout=20, follow_redirects=True
+        ) as client:
             response = await client.get(url)
             response.raise_for_status()
     except httpx.HTTPError as exc:
