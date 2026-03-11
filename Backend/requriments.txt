@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+motor
+apscheduler
+feedparser
+httpx
+beautifulsoup4
+lxml
+pydantic-settings
