@@ -1,11 +1,30 @@
 {
   "name": "news-aggregation-root",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npm run dev --prefix Frontend",
+    "dev:frontend": "npm run dev --prefix Frontend",
+    "dev:legacy": "vite Frontend_Legacy",
+    "backend": "python main.py",
     "build": "npm run build --prefix Frontend",
-    "preview": "npm run preview --prefix Frontend",
-    "lint": "npm run lint --prefix Frontend",
-    "install:frontend": "npm install --prefix Frontend"
+    "build:frontend": "npm run build --prefix Frontend",
+    "preview": "vite preview Frontend_Legacy",
+    "lint": "eslint Frontend_Legacy"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.99.1",
+    "autoprefixer": "^10.4.27",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.436.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "vite": "^7.3.1"
   }
 }

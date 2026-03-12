@@ -1,37 +1,7 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-*.egg
+node_modules/
+.env
+.DS_Store
 dist/
 build/
-.eggs/
-*.pyc
-
-# Virtual environments
-.venv/
-venv/
-env/
-
-# Environment / secrets — never commit these
-.env
-.env.*
-!.env.example
-
-# MyPy / type checking cache
-.mypy_cache/
-.dmypy.json
-
-# Pytest cache
-.pytest_cache/
-
-# IDE
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Docker volumes (if mounted locally)
-mongo_data/
+ntuser.*
+*.ini
