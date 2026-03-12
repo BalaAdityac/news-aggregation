@@ -1,0 +1,47 @@
+-- Create the articles table
+CREATE TABLE articles (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    source TEXT NOT NULL,
+    category TEXT DEFAULT 'General',
+    url TEXT NOT NULL,
+    content TEXT DEFAULT '',
+    image_url TEXT,
+    published_at TEXT,
+    fetched_at TIMESTAMPTZ DEFAULT NOW(),
+    
+    -- Summarized fields (filled after AI processing)
+    summary TEXT,
+    importance_score INTEGER DEFAULT 5,
+    sentiment TEXT DEFAULT 'Neutral',
+    why_it_matters TEXT,
+    is_summarized BOOLEAN DEFAULT FALSE
+);
+
+-- Create index for faster category queries
+CREATE INDEX idx_articles_category ON articles(category);
+CREATE INDEX idx_articles_fetched_at ON articles(fetched_at);
+
+-- Create the users table (your frontend person may handle this too)
+CREATE TABLE users (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    phone TEXT,
+    categories TEXT[] DEFAULT '{"General"}',
+    sources TEXT[] DEFAULT '{}',
+    frequency TEXT DEFAULT 'daily',
+    delivery TEXT[] DEFAULT '{"email"}',
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+-- Newsletter delivery log
+CREATE TABLE newsletter_logs (
+    id SERIAL PRIMARY KEY,
+    user_id TEXT REFERENCES users(id),
+    sent_at TIMESTAMPTZ DEFAULT NOW(),
+    delivery_method TEXT,
+    article_count INTEGER,
+    status TEXT DEFAULT 'sent'
+);

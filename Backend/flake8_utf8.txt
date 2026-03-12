@@ -1,0 +1,15 @@
+﻿c:\news-aggregator\news-aggregation\Backend\app\api\v1\endpoints\articles.py:1:1: F401 '....api_v1_endpoints.articles.router' imported but unused
+c:\news-aggregator\news-aggregation\Backend\app\api_v1_endpoints\articles.py:15:89: E501 line too long (93 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\core\config.py:4:1: E302 expected 2 blank lines, found 1
+c:\news-aggregator\news-aggregation\Backend\app\core\config.py:17:1: E305 expected 2 blank lines after class or function definition, found 1
+c:\news-aggregator\news-aggregation\Backend\app\core\config.py:17:22: W292 no newline at end of file
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\api_connectors.py:16:89: E501 line too long (119 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\deduplicator.py:46:89: E501 line too long (124 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:36:89: E501 line too long (104 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:45:89: E501 line too long (90 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:117:89: E501 line too long (100 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:125:89: E501 line too long (90 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:126:89: E501 line too long (90 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:129:89: E501 line too long (98 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\scrapers\web_scraper.py:18:89: E501 line too long (94 > 88 characters)
+c:\news-aggregator\news-aggregation\Backend\app\services\scrapers\web_scraper.py:63:89: E501 line too long (99 > 88 characters)

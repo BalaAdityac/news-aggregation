@@ -1,0 +1,8 @@
+﻿c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\ingest.py:36: error: "datetime" gets multiple values for keyword argument "tzinfo"  [misc]
+c:\news-aggregator\news-aggregation\Backend\app\services\aggregators\rss_parser.py:3: error: Skipping analyzing "feedparser": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+c:\news-aggregator\news-aggregation\Backend\app\core\scheduler.py:5: error: Skipping analyzing "apscheduler.schedulers.asyncio": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+c:\news-aggregator\news-aggregation\Backend\app\core\scheduler.py:5: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+c:\news-aggregator\news-aggregation\Backend\app\core\scheduler.py:6: error: Skipping analyzing "apscheduler.triggers.interval": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+c:\news-aggregator\news-aggregation\Backend\app\api_v1_endpoints\articles.py:16: error: Cannot assign to a type  [misc]
+c:\news-aggregator\news-aggregation\Backend\app\api_v1_endpoints\articles.py:16: error: Incompatible types in assignment (expression has type "None", variable has type "type[ObjectId]")  [assignment]
+Found 6 errors in 1 file (checked 30 source files)
